@@ -1,0 +1,176 @@
+/* 
+ /* Import a nice font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+  --bgOrange: #e84949;
+}
+
+/* Main Container - Centers everything and adds background */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* background-image: url("../../assets/Images/home_page_img_2.jpg"); */
+  /* background-color: red; */
+  min-height: 100vh;
+  width: 100%;
+  /* background: linear-gradient(135deg, #d0cdcc 0%, white 100%); */
+  font-family: 'Poppins', sans-serif;
+  /* padding: 20px; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo Styling */
+.header-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: blue;
+}
+
+#office-logo {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%; /* Makes the logo circular */
+  border: 4px solid #e8f5e9;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.home-heading{
+  color: black;
+  font-weight: bolder;
+}
+.home-container::before{
+  content: "";
+  position: absolute;
+  top: 100px; /* header height */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 100px);
+  background: rgba(0, 0, 0, 0.5); /* light black shadow */
+}
+
+.header-section{
+  position: relative;
+  z-index: 2;
+}
+
+.content-section{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-left: 200px;
+  padding-top: 40px;
+ 
+}
+
+
+.content-wrapper{
+  width: 700px;
+}
+.home-body{
+  display: flex;
+  justify-content: flex-start;
+}
+.welcome-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.welcome-title::before,
+.welcome-title::after{
+    content: "";
+    width: 200px;
+    height: 2px;
+    background-color: white;
+}
+.portal-name{
+  font-size: 35px;
+  font-weight: bolder;
+  color: white;
+  margin-left: 20px;
+}
+.underline{
+   content: "";
+    width: 640px;
+    height: 2px;
+    background-color:white;
+    margin-top: 30px;
+}
+.home-description{
+  color: white;
+  font-size: 18px;
+  font-weight:500;
+  margin-top: 25px;
+}
+
+.btn-group{
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    margin-left: 130px;
+}
+ /* .btn-group{
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+} */
+ /* .btn-group{
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+} */
+
+
+.btn-pink{
+    background-color: var(--bgOrange);
+    color: white;
+    padding: 0.8rem 2.3rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.btn-pink::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.8s ease;
+    z-index: -1;
+}
+
+.btn-pink:hover::before{
+    transform: scaleX(1);
+}
+
+.btn-pink:hover{
+    transform: scale(0.9);
+    color: black;
+    border: 3px solid var(--bgOrange);
+}
