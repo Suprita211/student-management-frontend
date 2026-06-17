@@ -1,131 +1,141 @@
 import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
+
 function Login() {
-     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
-     const handleLogin = async (e) => {
+const navigate = useNavigate();
 
-        e.preventDefault();
+const [username, setUsername] = useState("");
+const [password, setPassword] = useState("");
 
-        try {
+const handleLogin = async (e) => {
 
-            const response = await axiosInstance.post(
-                "/auth/login",
-                {
-                    email,
-                    password
-                }
-            );
+    e.preventDefault();
 
-            // SAVE JWT
-            localStorage.setItem(
-                "token",
-                response.data.token
-            );
+    try {
 
-            // SAVE ROLE
-            localStorage.setItem(
-                "role",
-                response.data.role
-            );
-
-            // SAVE EMAIL
-            localStorage.setItem(
-                "email",
-                email
-            );
-
-            console.log("Login Success");
-            
-
-            if (response.data.role === "ROLE_ADMIN") {
-
-                navigate("/admin/dashboard");
-
-            } else {
-
-                navigate("/operator/dashboard");
+        const response = await axiosInstance.post(
+            "/auth/login",
+            {
+                username,
+                password
             }
+        );
 
-        } catch (error) {
+        // SAVE JWT
+        localStorage.setItem(
+            "token",
+            response.data.token
+        );
 
-            console.log(error);
+        // SAVE ROLE
+        localStorage.setItem(
+            "role",
+            response.data.role
+        );
 
-            alert("Invalid Credentials");
+        // SAVE USERNAME
+        localStorage.setItem(
+            "username",
+            username
+        );
+
+        console.log("Login Success");
+
+        if (response.data.role === "ROLE_ADMIN") {
+
+            navigate("/admin/dashboard");
+
+        } else {
+
+            navigate("/operator/dashboard");
+
         }
-    };
 
-    return (
+    } catch (error) {
 
-        <div className="container mt-5">
+        console.log(error);
 
-            <div className="row justify-content-center">
+        alert("Invalid Credentials");
 
-                <div className="col-md-4">
+    }
 
-                    <div className="card p-4">
+};
 
-                        <h3 className="text-center mb-4">
+return (
+
+    <div className="container mt-5">
+
+        <div className="row justify-content-center">
+
+            <div className="col-md-4">
+
+                <div className="card p-4 shadow">
+
+                    <h3 className="text-center mb-4">
+                        Login
+                    </h3>
+
+                    <form onSubmit={handleLogin}>
+
+                        <div className="mb-3">
+
+                            <label className="form-label">
+                                Username
+                            </label>
+
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={username}
+                                onChange={(e) =>
+                                    setUsername(e.target.value)
+                                }
+                                required
+                            />
+
+                        </div>
+
+                        <div className="mb-3">
+
+                            <label className="form-label">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                className="form-control"
+                                value={password}
+                                onChange={(e) =>
+                                    setPassword(e.target.value)
+                                }
+                                required
+                            />
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary w-100"
+                        >
                             Login
-                        </h3>
+                        </button>
 
-                        <form onSubmit={handleLogin}>
-
-                            <div className="mb-3">
-
-                                <label>
-                                    Email
-                                </label>
-
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    value={email}
-                                    onChange={(e) =>
-                                        setEmail(e.target.value)
-                                    }
-                                />
-
-                            </div>
-
-                            <div className="mb-3">
-
-                                <label>
-                                    Password
-                                </label>
-
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
-                                />
-
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="btn btn-primary w-100"
-                            >
-                                Login
-                            </button>
-
-                        </form>
-
-                    </div>
+                    </form>
 
                 </div>
 
             </div>
 
         </div>
-    );
+
+    </div>
+
+);
+
+
 }
 
 export default Login;

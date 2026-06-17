@@ -3,6 +3,8 @@ from "react-router-dom";
 
 import Login from "../pages/auth/login";
 import Dashboard from "../pages/operator/Dashboard";
+import CreateStudent from "../pages/operator/CreateStudent";
+import SearchStudent from "../pages/operator/SearchStudent";
 function AppRoutes() {
 
     return (
@@ -22,10 +24,16 @@ function AppRoutes() {
 />
 
 
+  
     <Route
-        path="/admin/dashboard"
-        element={<Dashboard />}
-    />
+  path="/operator/create-student"
+  element={<CreateStudent />}
+/>
+
+<Route
+  path="/operator/search-student"
+  element={<SearchStudent />}
+/>
 
             </Routes>
 
