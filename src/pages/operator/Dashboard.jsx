@@ -29,6 +29,17 @@ return ( <div className="container mt-5"> <h2>Operator Dashboard</h2>
         <p>Find student by Student ID</p>
       </div>
     </div>
+    <div className="col-md-4">
+  <div
+    className="card p-3"
+    style={{ cursor: "pointer" }}
+    onClick={() =>
+      navigate("/operator/upload-document")
+    }
+  >
+    <h4>Upload Document</h4>
+  </div>
+</div>
 
   </div>
 </div>

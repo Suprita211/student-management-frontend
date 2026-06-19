@@ -23,6 +23,7 @@ const handleLogin = async (e) => {
                 password
             }
         );
+        console.log("LOGIN RESPONSE:", response.data);
 
         // SAVE JWT
         localStorage.setItem(
@@ -122,6 +123,17 @@ return (
                         >
                             Login
                         </button>
+                        <div className="text-center mt-3">
+    <span
+        style={{
+            color: "blue",
+            cursor: "pointer"
+        }}
+        onClick={() => navigate("/forgot-password")}
+    >
+        Forgot Password?
+    </span>
+</div>
 
                     </form>
 
