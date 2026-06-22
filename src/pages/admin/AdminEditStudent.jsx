@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
+
 
 function AdminEditStudent() {
 
   const { studentId } = useParams();
-
+  
+const fileInputRef = useRef(null);
   const navigate = useNavigate();
 const [selectedDocumentId, setSelectedDocumentId] = useState(null);
 const [studentChanged, setStudentChanged] = useState(false);
@@ -213,20 +215,75 @@ const updateDocument = async () => {
 
     }
 
+    const fileType = newFile.type;
+
+    // PHOTO VALIDATION
+    if (documentType === "PHOTO") {
+
+      if (
+        fileType !== "image/png" &&
+        fileType !== "image/jpeg"
+      ) {
+
+        alert(
+          "PHOTO document must be PNG or JPEG file only"
+        );
+
+        setNewFile(null);
+
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+
+        return;
+      }
+    }
+
+    // UNIVERSITY / NIMTT VALIDATION
+    if (
+      documentType === "UNIVERSITY" ||
+      documentType === "NIMTT"
+    ) {
+
+      if (
+        fileType !== "application/pdf"
+      ) {
+
+        alert(
+          `${documentType} document must be PDF file only`
+        );
+
+        setNewFile(null);
+
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+
+        return;
+      }
+    }
+
     const formData = new FormData();
 
     formData.append("file", newFile);
 
-    formData.append("documentName", documentName);
+    formData.append(
+      "documentName",
+      documentName
+    );
 
-    formData.append("documentType", documentType);
+    formData.append(
+      "documentType",
+      documentType
+    );
 
     await axiosInstance.put(
       `/students/documents/${selectedDocumentId}`,
       formData,
       {
         headers: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type":
+            "multipart/form-data"
         }
       }
     );
@@ -237,7 +294,15 @@ const updateDocument = async () => {
 
     setNewFile(null);
 
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+
     fetchStudent();
+
+    alert(
+      "Document Updated Successfully"
+    );
 
   } catch (error) {
 
@@ -464,13 +529,14 @@ const updateDocument = async () => {
       }
     />
 
-    <input
-      type="file"
-      className="form-control mb-2"
-      onChange={(e) =>
-        setNewFile(e.target.files[0])
-      }
-    />
+   <input
+  ref={fileInputRef}
+  type="file"
+  className="form-control mb-2"
+  onChange={(e) =>
+    setNewFile(e.target.files[0])
+  }
+/>
 
     <button
       type="button"

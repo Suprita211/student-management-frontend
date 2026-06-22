@@ -60,9 +60,8 @@ function SearchStudent() {
   };
 
   // ---------------- VIEW DOCUMENT ----------------
-  const viewDocument = async (documentId) => {
+const viewDocument = async (documentId) => {
   try {
-
     const response = await axiosInstance.get(
       `/students/documents/${documentId}/view`,
       {
@@ -70,20 +69,15 @@ function SearchStudent() {
       }
     );
 
-    const file = new Blob(
-      [response.data],
-      { type: "application/pdf" }
-    );
+    const blob = response.data;
 
-    const fileURL = URL.createObjectURL(file);
+    const blobUrl = window.URL.createObjectURL(blob);
 
-    window.open(fileURL, "_blank");
+    window.open(blobUrl, "_blank");
 
   } catch (error) {
-
-    console.log(error);
+    console.error(error);
     alert("Unable to view document");
-
   }
 };
 
@@ -99,7 +93,22 @@ function SearchStudent() {
       const link = document.createElement("a");
 
       link.href = url;
-      link.setAttribute("download", `Document_${documentId}.pdf`);
+    const contentType = response.headers["content-type"];
+
+let extension = "";
+
+if (contentType.includes("image/png")) {
+  extension = ".png";
+} else if (contentType.includes("image/jpeg")) {
+  extension = ".jpg";
+} else {
+  extension = ".pdf";
+}
+
+link.setAttribute(
+  "download",
+  `Document_${documentId}${extension}`
+);
 
       document.body.appendChild(link);
       link.click();
