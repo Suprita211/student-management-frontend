@@ -35,35 +35,32 @@ setStudent({
 };
 
 const handleSubmit = async (e) => {
-e.preventDefault();
-
-
-try {
-
+  e.preventDefault();
+console.log(
+    JSON.stringify(student, null, 2)
+  );
   const token = localStorage.getItem("token");
 
-  await axios.post(
-    "http://localhost:8080/students",
-    student,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
+  console.log("TOKEN =", token);
+  console.log("STUDENT DATA =", student);
+
+  try {
+    await axios.post(
+      "http://localhost:8080/students",
+      student,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    }
-  );
+    );
 
-  alert("Student Created Successfully");
+    alert("Student Created Successfully");
 
-} catch (error) {
-
-  console.log(error);
-
-  console.log(error.response);
-
-  alert("Failed");
-}
-
-
+  } catch (error) {
+    console.log(error);
+    console.log(error.response);
+  }
 };
 
 return ( <div className="container mt-4">

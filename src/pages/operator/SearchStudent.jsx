@@ -176,7 +176,7 @@ link.setAttribute(
                 <tr>
                   <th>Type</th>
                   <th>Name</th>
-                  {isAdmin && <th>Actions</th>}
+                 <th>Actions</th>
                 </tr>
               </thead>
 
@@ -187,23 +187,25 @@ link.setAttribute(
                     <td>{doc.documentName}</td>
 
                     {/* ADMIN ACTIONS ONLY */}
-                    {isAdmin && (
-                      <td>
-                        <button
-                          className="btn btn-primary btn-sm me-2"
-                          onClick={() => viewDocument(doc.documentId)}
-                        >
-                          View
-                        </button>
+                   <td>
+  {/* Everyone can View */}
+  <button
+    className="btn btn-primary btn-sm me-2"
+    onClick={() => viewDocument(doc.documentId)}
+  >
+    View
+  </button>
 
-                        <button
-                          className="btn btn-success btn-sm"
-                          onClick={() => downloadDocument(doc.documentId)}
-                        >
-                          Download
-                        </button>
-                      </td>
-                    )}
+  {/* Only Admin can Download */}
+  {isAdmin && (
+    <button
+      className="btn btn-success btn-sm"
+      onClick={() => downloadDocument(doc.documentId)}
+    >
+      Download
+    </button>
+  )}
+</td>
                   </tr>
                 ))}
               </tbody>
