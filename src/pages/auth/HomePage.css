@@ -52,7 +52,8 @@
 
 .home-heading{
   color: black;
-  font-weight: bolder;
+  font-weight: bold;
+  font-size: 34px; 
 }
 .home-container::before{
   content: "";

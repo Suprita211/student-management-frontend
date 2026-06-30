@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: #e9e9f0;
     height: 100vh;
     width: 100%;
 }
 .office-logo{
-    height: 100px;
-    width: 100px;
+    height: 85px;
+    width: 85px;
 }
 .office-logo img{
     width: 100%;
@@ -31,7 +31,7 @@
 .Login-page {
   display: flex; /* Only once */
   flex-direction: column;
-  height: 400px; /* Full screen height */
+  height: 380px; /* Full screen height */
   width: 550px;  /* Full screen width */
   /* justify-content: center; */
   align-items: center;
@@ -39,7 +39,7 @@
   color:white;
   font-size: 2rem;
   overflow: hidden; /* Prevents overflow */
-  margin-top: 20px;
+  margin-top: 15px;
  
 }
 

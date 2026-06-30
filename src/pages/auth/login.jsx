@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginImage from "../../assets/Images/Login_UI.webp";
 import LoginImageM from "../../assets/Images/Login_UI_M.png";
 import NimttLogo from "../../assets/Images/NIMTT_logo.jpeg";
 import personIcon from "../../assets/Images/person_icon.png";
 import passwordIcon from "../../assets/Images/password_logo.png";
 import emailIcon from "../../assets/Images/email_icon.png";
+import { useNavigate } from "react-router-dom";
 
 import './Login.css';
 
 function Login() {
+  const navigate = useNavigate();
+
+  const [step, setStep] = useState("login");
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  const handleLogin = () => {
+  // Later you will call your backend API here
+
+  if (username.trim() === "" || password.trim() === "") {
+    alert("Please enter username and password");
+    return;
+  }
+
+  // Navigate to Dashboard
+  navigate("/dashboard/add-student");
+};
+
   return (
    <div className='Login-content'>
          <div className="App-name">
@@ -20,33 +42,171 @@ function Login() {
         <p className="font-bold gradient-text " id='login-AppName'>NATIONAL INSTITUTE OF MANAGEMENT AND TECHNICAL TRAINING</p>
     </div>
     <div className='Login-page'>
-        {/* <div className="left-side">
-            <img
-            src={LoginImageM}
-            alt="Login visual"
-            className='Login-image'
-          /> 
-       </div> */}
-        {/* <div className="Login-content"> */}
-             <p className='heading-login'>Welcome Back</p>
-             <p className="subHeading-login">Login with your credentials</p>
-        {/* </div> */}
-        <form action="">
-          <div className="input-field">
-            <img className="input-img" src={personIcon} alt="" />
-            <input className="input-text" type="text" placeholder="User Name"/>
-          </div>
-           <div className="input-field">
-            <img className="input-img" src={passwordIcon} alt="" />
-            <input className="input-text" type="password" placeholder="Password"/>
-          </div>
-           {/* <div className="input-field">
-            <img className="input-img" src={emailIcon} alt="" />
-            <input className="input-text" type="text" placeholder="Email"/>
-          </div> */}
-          <p className="forgot-password">Forgot password?</p>
-          <button className="login-btn">Login</button>
-        </form>
+        <p className='heading-login'>Welcome Back</p>
+        <p className="subHeading-login">
+        {step === "login" && "Login with your credentials"}
+        {step === "forgot" && "Enter your username"}
+        {step === "otp" && "Enter the OTP"}
+        {step === "reset" && "Create a new password"}
+</p>
+           
+
+      
+      <form onSubmit={(e) => e.preventDefault()}>
+
+  {/* LOGIN SCREEN */}
+  {step === "login" && (
+    <>
+      <div className="input-field">
+        <img className="input-img" src={personIcon} alt="" />
+        <input
+          className="input-text"
+          type="text"
+          placeholder="User Name"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+
+      <div className="input-field">
+        <img className="input-img" src={passwordIcon} alt="" />
+        <input
+          className="input-text"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+
+      <p
+        className="forgot-password"
+        onClick={() => setStep("forgot")}
+      >
+        Forgot password?
+      </p>
+
+      {/* <button type="button" className="login-btn">
+        Login
+      </button> */}
+      <button
+  type="button"
+  className="login-btn"
+  onClick={handleLogin}
+>
+  Login
+</button>
+    </>
+  )}
+
+  {/* SEND OTP SCREEN */}
+  {step === "forgot" && (
+    <>
+      <div className="input-field">
+        <img className="input-img" src={personIcon} alt="" />
+        <input
+          className="input-text"
+          type="text"
+          placeholder="User Name"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+
+      <button
+        type="button"
+        className="login-btn"
+        onClick={() => setStep("otp")}
+      >
+        Send OTP
+      </button>
+
+      <p
+        className="forgot-password"
+        onClick={() => setStep("login")}
+      >
+        Back to Login
+      </p>
+    </>
+  )}
+
+  {/* OTP SCREEN */}
+  {step === "otp" && (
+    <>
+      <div className="input-field">
+        <img className="input-img" src={personIcon} alt="" />
+        <input
+          className="input-text"
+          type="text"
+          value={username}
+          readOnly
+        />
+      </div>
+
+      <div className="input-field">
+        <img className="input-img" src={emailIcon} alt="" />
+        <input
+          className="input-text"
+          type="text"
+          placeholder="Enter OTP"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+        />
+      </div>
+
+      <button
+        type="button"
+        className="login-btn"
+        onClick={() => setStep("reset")}
+      >
+        Verify OTP
+      </button>
+    </>
+  )}
+
+  {/* RESET PASSWORD SCREEN */}
+  {step === "reset" && (
+    <>
+      <div className="input-field">
+        <img className="input-img" src={personIcon} alt="" />
+        <input
+          className="input-text"
+          type="text"
+          value={username}
+          readOnly
+        />
+      </div>
+
+      <div className="input-field">
+        <img className="input-img" src={passwordIcon} alt="" />
+        <input
+          className="input-text"
+          type="password"
+          placeholder="New Password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+      </div>
+
+      <button
+        type="button"
+        className="login-btn"
+        onClick={() => {
+          alert("Password Reset Successfully!");
+
+          setOtp("");
+          setNewPassword("");
+          setPassword("");
+
+          setStep("login");
+        }}
+      >
+        Reset Password
+      </button>
+    </>
+  )}
+
+</form>
     
     </div>
     </div>
