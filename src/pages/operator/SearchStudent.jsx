@@ -162,9 +162,9 @@ link.setAttribute(
           {/* COURSE INFO */}
           <h5>Course Information</h5>
           <p><b>Course:</b> {student.courseName}</p>
-          <p><b>Type:</b> {student.courseType}</p>
-          <p><b>Registration No:</b> {student.universityRegistrationNo}</p>
-
+<p><b>Type:</b> {student.courseType}</p>
+<p><b>University:</b> {student.universityName}</p>
+<p><b>Registration No:</b> {student.universityRegistrationNo}</p>
           <hr />
 
           {/* DOCUMENTS */}
