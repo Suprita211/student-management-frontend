@@ -29,6 +29,7 @@ const [newFile, setNewFile] = useState(null);
     permanentAddress: "",
     courseName: "",
     courseType: "",
+      universityName: "",
     universityRegistrationNo: "",
     dateOfAdmission: "",
     counsellorName: "",
@@ -94,6 +95,7 @@ const [newFile, setNewFile] = useState(null);
         permanentAddress: student.permanentAddress,
         courseName: student.courseName,
         courseType: student.courseType,
+         universityName: student.universityName,
         universityRegistrationNo:
           student.universityRegistrationNo,
         dateOfAdmission:
@@ -418,6 +420,13 @@ const updateDocument = async () => {
                 placeholder="Course Type"
                 onChange={handleChange}
               />
+              <input
+  className="form-control mb-2"
+  name="universityName"
+  value={student.universityName || ""}
+  placeholder="University Name"
+  onChange={handleChange}
+/>
 
               <input
                 className="form-control mb-2"
