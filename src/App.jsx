@@ -1,37 +1,34 @@
+import { BrowserRouter, useLocation } from "react-router-dom";
+// import Navbar from "./components/Navbar";
+import AppRoutes from "./routes/AppRoutes";
 
-import Login from "./pages/auth/login.jsx";
-import HomePage from "./pages/auth/HomePage.jsx";
-import Dashboard from "./pages/auth/dashboard.jsx";
+function AppContent() {
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+    const location = useLocation();
 
-import AddStudent from "./pages/operator/AddStudent.jsx";
-import SearchStudent from "./pages/operator/SearchStudent.jsx";
-import UploadDocument from "./pages/operator/UploadDocument.jsx";
+  const hideNavbarRoutes = [
+    "/",
+    "/login",
+    "/forgot-password"
+];
+
+    return (
+        <>
+            {/* {!hideNavbarRoutes.includes(location.pathname) &&
+                <Navbar />
+            } */}
+
+            <AppRoutes />
+        </>
+    );
+}
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-
-        <Route path="/" element={<HomePage />} />
-
-        <Route path="/login" element={<Login />} />
-
-        {/* Dashboard Layout */}
-        <Route path="/dashboard" element={<Dashboard />}>
-
-          <Route path="add-student" element={<AddStudent />} />
-
-          <Route path="search-student" element={<SearchStudent />} />
-
-          <Route path="upload-document" element={<UploadDocument />} />
-
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <AppContent />
+        </BrowserRouter>
+    );
 }
 
 export default App;

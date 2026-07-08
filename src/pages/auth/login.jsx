@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import LoginImage from "../../assets/Images/Login_UI.webp";
-import LoginImageM from "../../assets/Images/Login_UI_M.png";
+
 import NimttLogo from "../../assets/Images/NIMTT_logo.jpeg";
 import personIcon from "../../assets/Images/person_icon.png";
 import passwordIcon from "../../assets/Images/password_logo.png";
 import emailIcon from "../../assets/Images/email_icon.png";
 import { useNavigate } from "react-router-dom";
-
 import './Login.css';
+import axiosInstance from "../../utils/axiosInstance";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,16 +18,56 @@ function Login() {
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
-  const handleLogin = () => {
-  // Later you will call your backend API here
+  const handleLogin = async () => {
 
-  if (username.trim() === "" || password.trim() === "") {
-    alert("Please enter username and password");
-    return;
-  }
+    if (username.trim() === "" || password.trim() === "") {
+        alert("Please enter username and password");
+        return;
+    }
 
-  // Navigate to Dashboard
-  navigate("/dashboard/add-student");
+    try {
+
+        const response = await axiosInstance.post(
+            "/auth/login",
+            {
+                username,
+                password
+            }
+        );
+
+        localStorage.setItem(
+            "token",
+            response.data.token
+        );
+
+        localStorage.setItem(
+            "role",
+            response.data.role
+        );
+
+        localStorage.setItem(
+            "username",
+            username
+        );
+
+        if (response.data.role === "ROLE_ADMIN") {
+
+            navigate("/admin/dashboard");
+
+        } else {
+
+          navigate("/operator/dashboard");
+
+        }
+
+    } catch (error) {
+
+        console.log(error);
+
+        alert("Invalid Credentials");
+
+    }
+
 };
 
   return (
@@ -89,13 +128,16 @@ function Login() {
       {/* <button type="button" className="login-btn">
         Login
       </button> */}
-      <button
-  type="button"
-  className="login-btn"
-  onClick={handleLogin}
+
+ <button
+    type="button"
+    className="login-btn"
+    onClick={handleLogin}
 >
-  Login
+    Login
 </button>
+
+
     </>
   )}
 
@@ -201,7 +243,7 @@ function Login() {
           setStep("login");
         }}
       >
-        Reset Password
+        Reset
       </button>
     </>
   )}
@@ -210,8 +252,7 @@ function Login() {
     
     </div>
     </div>
-  )
-  
-}
+  );
+}  
 
 export default Login;
