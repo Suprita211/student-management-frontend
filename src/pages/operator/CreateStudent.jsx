@@ -19,6 +19,7 @@ permanentAddress: "",
 studentId: "",
 courseName: "",
 courseType: "",
+ universityName: "",   
 universityRegistrationNo: "",
 dateOfAdmission: "",
 counsellorName: "",
@@ -68,151 +69,158 @@ return ( <div className="container mt-4">
   <h2>Create Student</h2>
 
   <form onSubmit={handleSubmit}>
+  <div className="row">
 
-    <div className="row">
+    <div className="col-md-6">
 
-      <div className="col-md-6">
-        <input
-          className="form-control mb-2"
-          name="aadhaarNo"
-          placeholder="Aadhaar Number"
-          onChange={handleChange}
-        />
+      <input
+        className="form-control mb-2"
+        name="studentId"
+        placeholder="Student ID"
+        onChange={handleChange}
+      />
 
-        <input
-          className="form-control mb-2"
-          name="fullName"
-          placeholder="Full Name"
-          onChange={handleChange}
-        />
+      <input
+        className="form-control mb-2"
+        name="fullName"
+        placeholder="Student Name"
+        onChange={handleChange}
+      />
 
-        <input
-          className="form-control mb-2"
-          name="fatherName"
-          placeholder="Father Name"
-          onChange={handleChange}
-        />
+      <input
+        className="form-control mb-2"
+        name="courseName"
+        placeholder="Course Name"
+        onChange={handleChange}
+      />
 
-        <input
-          className="form-control mb-2"
-          name="motherName"
-          placeholder="Mother Name"
-          onChange={handleChange}
-        />
+      <input
+        className="form-control mb-2"
+        name="universityName"
+        placeholder="University Name"
+        onChange={handleChange}
+      />
 
-        <input
-          type="date"
-          className="form-control mb-2"
-          name="dateOfBirth"
-          onChange={handleChange}
-        />
+      <input
+        className="form-control mb-2"
+        name="session"
+        placeholder="Session"
+        onChange={handleChange}
+      />
 
-        <input
-          className="form-control mb-2"
-          name="primaryContact"
-          placeholder="Primary Contact"
-          onChange={handleChange}
-        />
+      <input
+        className="form-control mb-2"
+        name="duration"
+        placeholder="Duration"
+        onChange={handleChange}
+      />
 
-        <input
-          className="form-control mb-2"
-          name="secondaryContact"
-          placeholder="Secondary Contact"
-          onChange={handleChange}
-        />
+      <input
+        className="form-control mb-2"
+        name="universityRegistrationNo"
+        placeholder="University Registration Number"
+        onChange={handleChange}
+      />
 
-        <input
-          className="form-control mb-2"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-        />
-      </div>
+      <input
+        type="date"
+        className="form-control mb-2"
+        name="dateOfAdmission"
+        onChange={handleChange}
+      />
 
-      <div className="col-md-6">
+      <input
+        type="date"
+        className="form-control mb-2"
+        name="dateOfBirth"
+        onChange={handleChange}
+      />
 
-        <textarea
-          className="form-control mb-2"
-          name="presentAddress"
-          placeholder="Present Address"
-          onChange={handleChange}
-        />
-
-        <textarea
-          className="form-control mb-2"
-          name="permanentAddress"
-          placeholder="Permanent Address"
-          onChange={handleChange}
-        />
-
-        <input
-          className="form-control mb-2"
-          name="studentId"
-          placeholder="Student ID"
-          onChange={handleChange}
-        />
-
-        <input
-          className="form-control mb-2"
-          name="courseName"
-          placeholder="Course Name"
-          onChange={handleChange}
-        />
-
-        <input
-          className="form-control mb-2"
-          name="courseType"
-          placeholder="Course Type"
-          onChange={handleChange}
-        />
-
-        <input
-          className="form-control mb-2"
-          name="universityRegistrationNo"
-          placeholder="University Registration No"
-          onChange={handleChange}
-        />
-
-        <input
-          type="date"
-          className="form-control mb-2"
-          name="dateOfAdmission"
-          onChange={handleChange}
-        />
-
-        <input
-          className="form-control mb-2"
-          name="counsellorName"
-          placeholder="Counsellor Name"
-          onChange={handleChange}
-        />
-
-        <input
-          className="form-control mb-2"
-          name="session"
-          placeholder="Session"
-          onChange={handleChange}
-        />
-
-        <input
-          className="form-control mb-2"
-          name="duration"
-          placeholder="Duration"
-          onChange={handleChange}
-        />
-
-      </div>
+      <input
+        className="form-control mb-2"
+        name="aadhaarNo"
+        placeholder="Aadhaar Number"
+        onChange={handleChange}
+      />
 
     </div>
 
-    <button
-      type="submit"
-      className="btn btn-primary mt-3"
-    >
-      Save Student
-    </button>
+    <div className="col-md-6">
 
-  </form>
+      <input
+        className="form-control mb-2"
+        name="primaryContact"
+        placeholder="Primary Contact"
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
+        name="secondaryContact"
+        placeholder="Secondary Contact"
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
+        name="email"
+        placeholder="Email"
+        onChange={handleChange}
+      />
+
+      <textarea
+        className="form-control mb-2"
+        name="presentAddress"
+        placeholder="Present Address"
+        onChange={handleChange}
+      />
+
+      <textarea
+        className="form-control mb-2"
+        name="permanentAddress"
+        placeholder="Permanent Address"
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
+        name="fatherName"
+        placeholder="Father Name"
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
+        name="motherName"
+        placeholder="Mother Name"
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
+        name="counsellorName"
+        placeholder="Counsellor Name"
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
+        name="courseType"
+        placeholder="Course Type"
+        onChange={handleChange}
+      />
+
+    </div>
+
+  </div>
+
+  <button
+    type="submit"
+    className="btn btn-primary mt-3"
+  >
+    Save Student
+  </button>
+</form>
 
 </div>
 
