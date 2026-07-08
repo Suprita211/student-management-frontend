@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "../pages/auth/login";
 import Dashboard from "../pages/operator/Dashboard";
+import OperatorDashboardUI from "../pages/operator/Operator_dashboard_UI";
 import CreateStudent from "../pages/operator/CreateStudent";
 import SearchStudent from "../pages/operator/SearchStudent";
 import UploadDocument from "../pages/operator/UploadDocument";
@@ -9,6 +10,7 @@ import AdminEditStudent from "../pages/admin/AdminEditStudent";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ProtectedRoute from "../components/ProtectedRoute";
+import HomePage from "../pages/auth/HomePage.jsx";
 
 function AppRoutes() {
 
@@ -16,7 +18,11 @@ function AppRoutes() {
 
         <Routes>
 
-            <Route path="/" element={<Login />} />
+            {/* <Route path="/" element={<Login />} /> */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+
+            
 
             <Route
                 path="/forgot-password"
@@ -35,9 +41,9 @@ function AppRoutes() {
             <Route
                 path="/operator/dashboard"
                 element={
-                    <ProtectedRoute>
-                        <Dashboard />
-                    </ProtectedRoute>
+                   <ProtectedRoute>
+            <OperatorDashboardUI />
+        </ProtectedRoute>
                 }
             />
 

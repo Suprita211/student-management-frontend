@@ -77,9 +77,21 @@ function HomePage() {
 
         {/* Buttons Section */}
         <div className="btn-group">
-           <button type="submit" className="btn-pink" id="submit-btn">
+           {/* <button type="submit" className="btn-pink" id="submit-btn">
                   <span className="btn-icon">🔑</span> Admin<i className="submit-icons fa-solid fa-paper-plane"></i>
-            </button>
+            </button> */}
+
+           <button
+type="button"
+className="btn-pink"
+onClick={() => navigate("/login")}
+
+>
+  <span className="btn-icon">🔑</span>
+    Admin
+</button>
+
+
            
             {/* <button type="submit" className="btn-pink" id="submit-btn">
                  <span className="btn-icon">📊</span> Data Operator<i className="submit-icons fa-solid fa-paper-plane"></i>
