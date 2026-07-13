@@ -1,29 +1,18 @@
-import React, { useState } from "react";
-
-import NimttLogo from "../../assets/Images/NIMTT_logo.jpeg";
-import personIcon from "../../assets/Images/person_icon.png";
-import passwordIcon from "../../assets/Images/password_logo.png";
-import emailIcon from "../../assets/Images/email_icon.png";
-import { useNavigate } from "react-router-dom";
-import './Login.css';
+import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const navigate = useNavigate();
 
-  const [step, setStep] = useState("login");
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [otp, setOtp] = useState("");
-  const [newPassword, setNewPassword] = useState("");
+const navigate = useNavigate();
 
-  const handleLogin = async () => {
+const [username, setUsername] = useState("");
+const [password, setPassword] = useState("");
 
-    if (username.trim() === "" || password.trim() === "") {
-        alert("Please enter username and password");
-        return;
-    }
+const handleLogin = async (e) => {
+
+    e.preventDefault();
 
     try {
 
@@ -34,21 +23,27 @@ function Login() {
                 password
             }
         );
+        console.log("LOGIN RESPONSE:", response.data);
 
+        // SAVE JWT
         localStorage.setItem(
             "token",
             response.data.token
         );
 
+        // SAVE ROLE
         localStorage.setItem(
             "role",
             response.data.role
         );
 
+        // SAVE USERNAME
         localStorage.setItem(
             "username",
             username
         );
+
+        console.log("Login Success");
 
         if (response.data.role === "ROLE_ADMIN") {
 
@@ -56,7 +51,7 @@ function Login() {
 
         } else {
 
-          navigate("/operator/dashboard");
+            navigate("/operator/dashboard");
 
         }
 
@@ -70,189 +65,89 @@ function Login() {
 
 };
 
-  return (
-   <div className='Login-content'>
-         <div className="App-name">
-           <img
-            src={NimttLogo}
-            alt="NIMTT Visual"
-            className='office-logo'
-          />
-        <p className="font-bold gradient-text " id='login-AppName'>NATIONAL INSTITUTE OF MANAGEMENT AND TECHNICAL TRAINING</p>
-    </div>
-    <div className='Login-page'>
-        <p className='heading-login'>Welcome Back</p>
-        <p className="subHeading-login">
-        {step === "login" && "Login with your credentials"}
-        {step === "forgot" && "Enter your username"}
-        {step === "otp" && "Enter the OTP"}
-        {step === "reset" && "Create a new password"}
-</p>
-           
+return (
 
-      
-      <form onSubmit={(e) => e.preventDefault()}>
+    <div className="container mt-5">
 
-  {/* LOGIN SCREEN */}
-  {step === "login" && (
-    <>
-      <div className="input-field">
-        <img className="input-img" src={personIcon} alt="" />
-        <input
-          className="input-text"
-          type="text"
-          placeholder="User Name"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
+        <div className="row justify-content-center">
 
-      <div className="input-field">
-        <img className="input-img" src={passwordIcon} alt="" />
-        <input
-          className="input-text"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+            <div className="col-md-4">
 
-      <p
-        className="forgot-password"
-        onClick={() => setStep("forgot")}
-      >
-        Forgot password?
-      </p>
+                <div className="card p-4 shadow">
 
-      {/* <button type="button" className="login-btn">
-        Login
-      </button> */}
+                    <h3 className="text-center mb-4">
+                        Login
+                    </h3>
 
- <button
-    type="button"
-    className="login-btn"
-    onClick={handleLogin}
->
-    Login
-</button>
+                    <form onSubmit={handleLogin}>
 
+                        <div className="mb-3">
 
-    </>
-  )}
+                            <label className="form-label">
+                                Username
+                            </label>
 
-  {/* SEND OTP SCREEN */}
-  {step === "forgot" && (
-    <>
-      <div className="input-field">
-        <img className="input-img" src={personIcon} alt="" />
-        <input
-          className="input-text"
-          type="text"
-          placeholder="User Name"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={username}
+                                onChange={(e) =>
+                                    setUsername(e.target.value)
+                                }
+                                required
+                            />
 
-      <button
-        type="button"
-        className="login-btn"
-        onClick={() => setStep("otp")}
-      >
-        Send OTP
-      </button>
+                        </div>
 
-      <p
-        className="forgot-password"
-        onClick={() => setStep("login")}
-      >
-        Back to Login
-      </p>
-    </>
-  )}
+                        <div className="mb-3">
 
-  {/* OTP SCREEN */}
-  {step === "otp" && (
-    <>
-      <div className="input-field">
-        <img className="input-img" src={personIcon} alt="" />
-        <input
-          className="input-text"
-          type="text"
-          value={username}
-          readOnly
-        />
-      </div>
+                            <label className="form-label">
+                                Password
+                            </label>
 
-      <div className="input-field">
-        <img className="input-img" src={emailIcon} alt="" />
-        <input
-          className="input-text"
-          type="text"
-          placeholder="Enter OTP"
-          value={otp}
-          onChange={(e) => setOtp(e.target.value)}
-        />
-      </div>
+                            <input
+                                type="password"
+                                className="form-control"
+                                value={password}
+                                onChange={(e) =>
+                                    setPassword(e.target.value)
+                                }
+                                required
+                            />
 
-      <button
-        type="button"
-        className="login-btn"
-        onClick={() => setStep("reset")}
-      >
-        Verify OTP
-      </button>
-    </>
-  )}
+                        </div>
 
-  {/* RESET PASSWORD SCREEN */}
-  {step === "reset" && (
-    <>
-      <div className="input-field">
-        <img className="input-img" src={personIcon} alt="" />
-        <input
-          className="input-text"
-          type="text"
-          value={username}
-          readOnly
-        />
-      </div>
-
-      <div className="input-field">
-        <img className="input-img" src={passwordIcon} alt="" />
-        <input
-          className="input-text"
-          type="password"
-          placeholder="New Password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
-      </div>
-
-      <button
-        type="button"
-        className="login-btn"
-        onClick={() => {
-          alert("Password Reset Successfully!");
-
-          setOtp("");
-          setNewPassword("");
-          setPassword("");
-
-          setStep("login");
+                        <button
+                            type="submit"
+                            className="btn btn-primary w-100"
+                        >
+                            Login
+                        </button>
+                        <div className="text-center mt-3">
+    <span
+        style={{
+            color: "blue",
+            cursor: "pointer"
         }}
-      >
-        Reset
-      </button>
-    </>
-  )}
+        onClick={() => navigate("/forgot-password")}
+    >
+        Forgot Password?
+    </span>
+</div>
 
-</form>
-    
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-    </div>
-  );
-}  
+
+);
+
+
+}
 
 export default Login;

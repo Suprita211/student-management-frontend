@@ -2,6 +2,9 @@
 import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import "./SearchStudent.css";
+import office_logo from "../../assets/Images/NIMTT_logo.jpeg";
+import studentIcon from "../../assets/Images/person_icon.png";
 
 function SearchStudent() {
   const [studentId, setStudentId] = useState("");
@@ -121,15 +124,21 @@ link.setAttribute(
   };
 
   return (
-    <div className="container mt-4">
-      <h2>Search Student</h2>
+    <div className="Search-page-container">
+      <div className="search-top-style">
+        <h2>SEARCH STUDENT</h2>
+      </div>
+      
 
       {/* SEARCH INPUT */}
-      <div className="row mb-4">
-        <div className="col-md-6">
+      <div className="search-input-container">
+        <div className="student-id-input data-field">
+          <label className="data-label">
+            Enter Student ID :
+          </label>
           <input
-            className="form-control"
-            placeholder="Enter Student ID"
+            className="form-control student-input"
+            placeholder="Student ID"
             value={studentId}
             onChange={(e) => setStudentId(e.target.value)}
           />
@@ -144,32 +153,51 @@ link.setAttribute(
 
       {/* STUDENT CARD */}
       {student && (
-        <div className="card shadow p-4">
-          <h3>{student.fullName}</h3>
+        <div className="student-card">
+          <div className="student-card-header">
+            <img src={office_logo} id="student-details-nimtt-logo" />
+            <p>NATIONAL INSTITUTE OF MANAGEMENT AND TECHNICAL TRAINING</p>
+            </div>
+            <div className="student-details">
+                <div className="student-name-container">
+                  <img src={studentIcon} alt="" />
+                   <h3>{student.fullName}</h3>
+                  </div> 
 
-          <hr />
+          <hr />       
 
-          {/* PERSONAL INFO */}
-          <h5>Personal Information</h5>
-          <p><b>Student ID:</b> {student.studentId}</p>
-          <p><b>Aadhaar:</b> {student.aadhaarNo}</p>
-          <p><b>Father Name:</b> {student.fatherName}</p>
-          <p><b>Mother Name:</b> {student.motherName}</p>
-          <p><b>Contact:</b> {student.primaryContact}</p>
-          <p><b>Email:</b> {student.email}</p>
+          <div className="info-section">
+    <h4 className="section-title">Personal Information</h4>
 
-          <hr />
+    <div className="info-grid">
+        <div><strong>Student ID :</strong> {student.studentId}</div>
+        <div><strong>Aadhaar No :</strong> {student.aadhaarNo}</div>
+        {/* <div><strong>Full Name :</strong> {student.fullName}</div> */}
+        <div><strong>Father Name :</strong> {student.fatherName}</div>
+        <div><strong>Mother Name :</strong> {student.motherName}</div>
+        <div><strong>Contact :</strong> {student.primaryContact}</div>
+        <div><strong>Email :</strong> {student.email}</div>
+        <div><strong>Date of Birth :</strong> {student.dateOfBirth}</div>
+    </div>
+</div>
 
-          {/* COURSE INFO */}
-          <h5>Course Information</h5>
-          <p><b>Course:</b> {student.courseName}</p>
-<p><b>Type:</b> {student.courseType}</p>
-<p><b>University:</b> {student.universityName}</p>
-<p><b>Registration No:</b> {student.universityRegistrationNo}</p>
-          <hr />
+<div className="info-section">
+    <h4 className="section-title">Course Information</h4>
+
+    <div className="info-grid">
+        <div><strong>Course :</strong> {student.courseName}</div>
+        <div><strong>Course Type :</strong> {student.courseType}</div>
+        <div><strong>University :</strong> {student.universityName}</div>
+        <div><strong>Registration No :</strong> {student.universityRegistrationNo}</div>
+        <div><strong>Admission Date :</strong> {student.dateOfAdmission}</div>
+        <div><strong>Session :</strong> {student.session}</div>
+        <div><strong>Duration :</strong> {student.duration}</div>
+        <div><strong>Counsellor :</strong> {student.counsellorName}</div>
+    </div>
+</div>
 
           {/* DOCUMENTS */}
-          <h5>Documents</h5>
+            <h4 className="section-title">Document Details</h4>
 
           {student.documents?.length > 0 ? (
             <table className="table table-bordered">
@@ -191,7 +219,7 @@ link.setAttribute(
                    <td>
   {/* Everyone can View */}
   <button
-    className="btn btn-primary btn-sm me-2"
+    className="view-btn"
     onClick={() => viewDocument(doc.documentId)}
   >
     View
@@ -201,6 +229,8 @@ link.setAttribute(
   {isAdmin && (
     <button
       className="btn btn-success btn-sm"
+      id="download-btn"
+
       onClick={() => downloadDocument(doc.documentId)}
     >
       Download
@@ -215,21 +245,25 @@ link.setAttribute(
             <p>No Documents Uploaded</p>
           )}
 
+            </div>
+        
           {/* ADMIN ONLY ACTIONS */}
           {isAdmin && (
             <>
               <hr />
 
-              <div className="d-flex gap-2">
+              <div className="admin-action-buttons">
                 <button
                   className="btn btn-success"
+                  id="download-pdf-btn"
                   onClick={downloadStudentPdf}
                 >
-                  Download Student PDF
+                  Download PDF
                 </button>
 
                 <button
                   className="btn btn-warning"
+                  id="edit-btn"
                   onClick={() =>
                     navigate(`/admin/edit-student/${student.studentId}`)
                   }

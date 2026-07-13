@@ -1,0 +1,249 @@
+.edit-page-top{
+    height: 70px;
+    background-color: green;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* ---------------------- */
+/* Documents Section */
+/* ---------------------- */
+
+.documents-section{
+    margin-top:30px;
+}
+
+.documents-title{
+    text-align:center;
+    color:#1b1b1b;
+    margin-bottom:15px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.documents-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.documents-table thead{
+    background:linear-gradient(to right,#22168f,#341282);
+    color:white;
+}
+
+.documents-table th,
+.documents-table td{
+    padding:15px;
+    text-align:center;
+    border:1px solid #ddd;
+}
+
+.documents-table tbody tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+.documents-table tbody tr:hover{
+    background:#edf7ff;
+}
+
+/* ---------------------- */
+/* Update Document Button */
+/* ---------------------- */
+
+.document-save-btn{
+
+    background:linear-gradient(to right,#168f16,#4caf50);
+    color:white;
+    border:none;
+    padding:10px 25px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:17px;
+    margin-top:10px;
+    transition:.3s;
+
+}
+
+.document-save-btn:hover{
+
+    background:linear-gradient(to right,#2c6ef2,#5f9dff);
+    transform:translateY(-2px);
+
+}
+
+/* ---------------------- */
+/* Update Student Button */
+/* ---------------------- */
+
+.update-btn{
+
+    width:220px;
+    height:45px;
+
+    background:linear-gradient(to right,#170e95,#260c7e);
+
+    border:none;
+    border-radius:25px;
+
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.update-btn:hover{
+
+    background:linear-gradient(to right,#0f0722,#0c0936);
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+
+}
+
+.button-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:30px;
+
+    margin-bottom:20px;
+
+}
+
+.no-document{
+
+    text-align:center;
+
+    font-size:18px;
+
+    color:#666;
+
+    margin-top:20px;
+
+}
+/* ===========================
+   Update Document Card
+=========================== */
+
+.update-document-card{
+
+    width: 70%;
+    margin: 35px auto;
+
+    background: #fff;
+
+    border-radius: 15px;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,.15);
+
+    padding: 30px;
+
+}
+
+.update-document-title{
+
+    text-align: center;
+
+    color: #2b2b2b;
+
+    font-size: 26px;
+
+    margin-bottom: 25px;
+
+}
+
+/* ===========================
+   Form Layout
+=========================== */
+
+.update-document-form{
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+}
+
+/* ===========================
+   Text Input
+=========================== */
+
+.document-input{
+
+    width: 320px;
+
+    height: 45px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: .3s;
+
+}
+
+.document-input:focus{
+
+    border-color: #3b5bdb;
+
+    box-shadow: 0 0 8px rgba(59,91,219,.25);
+
+}
+
+/* ===========================
+   File Input
+=========================== */
+
+.document-file-input{
+
+    width: 320px;
+
+    padding: 8px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    background: #fafafa;
+
+}
+
+/* ===========================
+   Save Button Center
+=========================== */
+
+.document-save-btn{
+
+    display: block;
+
+    margin: 25px auto 0;
+
+}

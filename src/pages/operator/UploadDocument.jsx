@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
+import './UploadDocument.css';
 
 function UploadDocument() {
 
@@ -65,95 +66,186 @@ function UploadDocument() {
   };
 
   return (
-    <div className="container mt-4">
+    // <div className="Upload-document-content">
+    //   <div className="Upload-document-top">
+    //      <h2>UPLOAD DOCUMENT</h2>
+    //      </div>
 
-      <h2>Upload Student Document</h2>
+    //   <div className="upload-document-form">
+    //      <form onSubmit={handleUpload}>
 
-      <form onSubmit={handleUpload}>
+    //     <div className="mb-3">
+    //       <label>
+    //         Student ID
+    //       </label>
 
-        <div className="mb-3">
-          <label>
-            Student ID
+    //       <input
+    //         className="form-control"
+    //         value={studentId}
+    //         onChange={(e) =>
+    //           setStudentId(e.target.value)
+    //         }
+    //         required
+    //       />
+    //     </div>
+
+    //     <div className="mb-3">
+    //       <label>
+    //         Document Name
+    //       </label>
+
+    //       <input
+    //         className="form-control"
+    //         value={documentName}
+    //         onChange={(e) =>
+    //           setDocumentName(e.target.value)
+    //         }
+    //         required
+    //       />
+    //     </div>
+
+    //     <div className="mb-3">
+    //       <label>
+    //         Document Type
+    //       </label>
+
+    //       <select
+    //         className="form-select"
+    //         value={documentType}
+    //         onChange={(e) =>
+    //           setDocumentType(e.target.value)
+    //         }
+    //       >
+    //         <option value="UNIVERSITY">
+    //           UNIVERSITY
+    //         </option>
+
+    //         <option value="NIMTT">
+    //           NIMTT
+    //         </option>
+
+    //         <option value="PHOTO">
+    //           PHOTO
+    //         </option>
+    //       </select>
+    //     </div>
+
+    //     <div className="mb-3">
+
+    //       <label>
+    //         Select File
+    //       </label>
+
+    //       <input
+    //         type="file"
+    //         className="form-control"
+    //         onChange={(e) =>
+    //           setFile(e.target.files[0])
+    //         }
+    //         required
+    //       />
+
+    //     </div>
+
+    //     <button
+    //       type="submit"
+    //       className="btn btn-success"
+    //     >
+    //       Upload Document
+    //     </button>
+
+    //   </form>
+    //   </div>
+     
+
+    // </div>
+    <div className="Upload-document-content">
+  <div className="register-top-style">
+    <h2>UPLOAD DOCUMENT</h2>
+  </div>
+
+  <div className="registration-page-content">
+    <form onSubmit={handleUpload}>
+
+      <div className="upload-form">
+
+        <div className="data-field">
+          <label className="data-label">
+            Student ID :
           </label>
 
           <input
-            className="form-control"
+            className="form-control student-input"
             value={studentId}
-            onChange={(e) =>
-              setStudentId(e.target.value)
-            }
+            placeholder="Student ID"
+            onChange={(e) => setStudentId(e.target.value)}
             required
           />
         </div>
 
-        <div className="mb-3">
-          <label>
-            Document Name
+        <div className="data-field">
+          <label className="data-label">
+            Document Name :
           </label>
 
           <input
-            className="form-control"
+            className="form-control student-input"
             value={documentName}
-            onChange={(e) =>
-              setDocumentName(e.target.value)
-            }
+            placeholder="Document Name"
+            onChange={(e) => setDocumentName(e.target.value)}
             required
           />
         </div>
 
-        <div className="mb-3">
-          <label>
-            Document Type
+        <div className="data-field">
+          <label className="data-label">
+            Document Type :
           </label>
 
           <select
-            className="form-select"
+            className="form-control student-input"
             value={documentType}
-            onChange={(e) =>
-              setDocumentType(e.target.value)
-            }
+            onChange={(e) => setDocumentType(e.target.value)}
           >
-            <option value="UNIVERSITY">
-              UNIVERSITY
-            </option>
-
-            <option value="NIMTT">
-              NIMTT
-            </option>
-
-            <option value="PHOTO">
-              PHOTO
-            </option>
+            <option value="UNIVERSITY">UNIVERSITY</option>
+            <option value="NIMTT">NIMTT</option>
+            <option value="PHOTO">PHOTO</option>
           </select>
         </div>
 
-        <div className="mb-3">
-
-          <label>
-            Select File
+        <div className="data-field">
+          <label className="data-label">
+            Select File :
           </label>
 
-          <input
+          {/* <input
             type="file"
-            className="form-control"
-            onChange={(e) =>
-              setFile(e.target.files[0])
-            }
+            className="form-control student-input"
+            onChange={(e) => setFile(e.target.files[0])}
             required
-          />
-
+          /> */}
+          <input
+    type="file"
+    className="form-control student-file-input"
+    onChange={(e) => setFile(e.target.files[0])}
+    required
+/>
         </div>
 
+      </div>
+
+      <div className="button-container">
         <button
           type="submit"
-          className="btn btn-success"
+          className="btn btn-primary" id="Upload-btn"
         >
-          Upload Document
+          Upload
         </button>
+      </div>
 
-      </form>
-
-    </div>
+    </form>
+  </div>
+</div>
   );
 }
 

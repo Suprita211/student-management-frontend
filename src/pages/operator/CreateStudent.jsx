@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import './CreateStudent.css';
 
 function CreateStudent() {
 
@@ -47,7 +48,7 @@ console.log(
 
   try {
     await axios.post(
-      "http://localhost:8080/students",
+      "http://localhost:8081/students",
       student,
       {
         headers: {
@@ -64,163 +65,266 @@ console.log(
   }
 };
 
-return ( <div className="container mt-4">
+return ( 
+<div className="registration-page">
+  <div className="register-top-style">
+    <h2>REGISTRATION FORM</h2>
+  </div>
 
-  <h2>Create Student</h2>
-
+   <div className="registration-page-content">
   <form onSubmit={handleSubmit}>
-  <div className="row">
+  <div className="field-content">
 
-    <div className="col-md-6">
-
-      <input
-        className="form-control mb-2"
+    <div className="left-form-grid">
+      <div className="data-field">
+        <label className="data-label">
+          Student ID : </label>
+ <input
+        className="form-control student-input"
         name="studentId"
         placeholder="Student ID"
         onChange={handleChange}
       />
-
-      <input
-        className="form-control mb-2"
+      </div>
+      {/* student name */}
+     
+      <div className="data-field">
+        <label className="data-label">
+          Student Name : </label>
+      
+       <input
+        className="form-control student-input"
         name="fullName"
         placeholder="Student Name"
         onChange={handleChange}
       />
-
-      <input
-        className="form-control mb-2"
+      </div>
+      
+     {/* course name */}
+      <div className="data-field">
+        <label className="data-label">
+          Course Name : </label>
+          <input
+        className="form-control student-input"
         name="courseName"
         placeholder="Course Name"
         onChange={handleChange}
       />
-
-      <input
-        className="form-control mb-2"
+      </div>
+     
+    <div className="data-field">
+      <label className="data-label">University Name : </label>
+       <input
+        className="form-control student-input"
         name="universityName"
         placeholder="University Name"
         onChange={handleChange}
       />
 
-      <input
-        className="form-control mb-2"
+    </div>
+
+    <div className="data-field">
+      <label className="data-label"> Session : </label>
+       <input
+        className="form-control student-input"
         name="session"
         placeholder="Session"
         onChange={handleChange}
       />
+    </div>
 
+     
+
+      <div className="data-field">
+      <label className="data-label"> Course Duration : </label>
       <input
-        className="form-control mb-2"
+        className="form-control student-input"
         name="duration"
         placeholder="Duration"
         onChange={handleChange}
       />
+    </div>
 
-      <input
-        className="form-control mb-2"
+
+
+<div className="data-field">
+      <label className="data-label">University Registration Number : </label>
+       <input
+        className="form-control student-input"
         name="universityRegistrationNo"
-        placeholder="University Registration Number"
+        placeholder="Registration Number"
         onChange={handleChange}
       />
+    </div>
+     
 
-      <input
+      <div className="data-field">
+      <label className="data-label">Date of Admission : </label>
+       <input
         type="date"
-        className="form-control mb-2"
+        className="form-control student-input"
         name="dateOfAdmission"
         onChange={handleChange}
       />
+    </div>
 
-      <input
+     
+
+
+<div className="data-field">
+      <label className="data-label"> Date of Birth : </label>
+       <input
         type="date"
-        className="form-control mb-2"
+        className="form-control student-input"
         name="dateOfBirth"
         onChange={handleChange}
       />
-
-      <input
-        className="form-control mb-2"
+    </div>
+     
+      
+      <div className="data-field">
+      <label className="data-label">Aadhaar No : </label>
+       <input
+        className="form-control student-input"
         name="aadhaarNo"
         placeholder="Aadhaar Number"
         onChange={handleChange}
       />
+    </div>
+     
 
     </div>
 
-    <div className="col-md-6">
+<div className="personal-info"> Personal Information</div>
+<div className="left-form-grid">
 
-      <input
-        className="form-control mb-2"
+<div className="data-field">
+      <label className="data-label">Primary Contact No : </label>
+       <input
+        className="form-control student-input"
         name="primaryContact"
         placeholder="Primary Contact"
         onChange={handleChange}
       />
-
-      <input
-        className="form-control mb-2"
+    </div>
+     
+ 
+ <div className="data-field">
+      <label className="data-label">Secondary Contact No : </label>
+       <input
+        className="form-control student-input"
         name="secondaryContact"
         placeholder="Secondary Contact"
         onChange={handleChange}
       />
+    </div>
+     
 
-      <input
-        className="form-control mb-2"
+    <div className="data-field">
+      <label className="data-label">Email Id : </label>
+       <input
+        className="form-control student-input"
         name="email"
         placeholder="Email"
         onChange={handleChange}
       />
+    </div>
+     
 
-      <textarea
-        className="form-control mb-2"
+{/* <div className="data-field">
+      <label className="data-label">Present Address : </label>
+        <textarea
+        className="form-control student-textarea"
         name="presentAddress"
         placeholder="Present Address"
         onChange={handleChange}
       />
+    </div> */}
 
-      <textarea
-        className="form-control mb-2"
+    <div className="data-field textarea-field">
+    <label className="data-label">
+        Present Address :
+    </label>
+
+    <textarea
+        className="form-control student-textarea"
+        name="presentAddress"
+        placeholder="Present Address"
+        onChange={handleChange}
+    />
+</div>
+    
+     
+     <div className="data-field">
+      <label className="data-label">Permanent Address : </label>
+       <textarea
+        className="form-control student-textarea"
         name="permanentAddress"
         placeholder="Permanent Address"
         onChange={handleChange}
       />
-
+    </div>
+     
+       
+       <div className="data-field">
+      <label className="data-label">Father's Name : </label>
       <input
-        className="form-control mb-2"
+        className="form-control student-input"
         name="fatherName"
         placeholder="Father Name"
         onChange={handleChange}
       />
-
-      <input
-        className="form-control mb-2"
+    </div>
+      
+      
+      <div className="data-field">
+      <label className="data-label"> Mother's Name : </label>
+       <input
+        className="form-control student-input"
         name="motherName"
         placeholder="Mother Name"
         onChange={handleChange}
       />
-
-      <input
-        className="form-control mb-2"
+    </div>
+     
+       
+       <div className="data-field">
+      <label className="data-label">Counsellor Name : </label>
+       <input
+        className="form-control student-input"
         name="counsellorName"
         placeholder="Counsellor Name"
         onChange={handleChange}
       />
+    </div>
+     
 
-      <input
-        className="form-control mb-2"
+<div className="data-field">
+      <label className="data-label">Course Type : </label>
+        <input
+        className="form-control student-input"
         name="courseType"
         placeholder="Course Type"
         onChange={handleChange}
       />
+    </div>
+    
 
     </div>
 
   </div>
 
+ <div className="button-container">
   <button
     type="submit"
-    className="btn btn-primary mt-3"
+    className="btn btn-primary"
   >
-    Save Student
+    Register
   </button>
+</div>
 </form>
+   </div>
+ 
 
 </div>
 

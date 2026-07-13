@@ -1,0 +1,53 @@
+/* .Upload-document-content{
+    display: flex;
+    flex-direction: column;
+}
+.Upload-document-content h2{
+    font-size: 30px;
+}
+.Upload-document-top{
+    background: green; 
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+} */
+ .Upload-document-content{
+    background-color: rgb(238,239,244);
+    min-height: 100vh;
+}
+
+.upload-form{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.upload-form .data-label{
+    width: 180px;
+}
+
+.upload-form .student-input{
+    width: 260px;
+}
+#Upload-btn{
+    margin-top: 40px;
+}
+
+.student-file-input::file-selector-button{
+    width:150px;
+    height:40px;
+    background:rgb(70, 74, 70);
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+.upload-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Center the fields */
+    gap: 18px;
+}

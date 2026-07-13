@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
+import "./AdminEditStudent.css";
 
 
 function AdminEditStudent() {
@@ -317,118 +318,271 @@ const updateDocument = async () => {
 };
   return (
 
-    <div className="container mt-4">
+    <div className="admin-edit-page">
+      <div className="edit-page-top">
+        <p>Edit Student Details</p>
+      </div>
 
-      <div className="card shadow p-4">
+<div className="registration-page-content">
+<form onSubmit={handleSubmit}>
 
-        <h2>Edit Student</h2>
+<div className="field-content">
 
-        <form onSubmit={handleSubmit}>
-
-          <div className="row">
-
-            <div className="col-md-6">
-
-              <input
+<div className="left-form-grid">
+                {/* <input
                 className="form-control mb-2"
                 name="fullName"
                 value={student.fullName || ""}
                 placeholder="Full Name"
                 onChange={handleChange}
-              />
+              /> */}
+              <div className="data-field">
+<label className="data-label">
+Student Name :
+</label>
 
-              <input
+<input
+className="form-control student-input"
+name="fullName"
+value={student.fullName || ""}
+onChange={handleChange}
+/>
+
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="fatherName"
                 value={student.fatherName || ""}
                 placeholder="Father Name"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Father Name :
+</label>
 
-              <input
-                className="form-control mb-2"
-                name="motherName"
-                value={student.motherName || ""}
-                placeholder="Mother Name"
-                onChange={handleChange}
-              />
+<input
+className="form-control student-input"
+name="fatherName"
+value={student.fatherName || ""}
+onChange={handleChange}
+/>
+</div>
 
-              <input
+{/* <input
+className="form-control mb-2"
+name="motherName"
+value={student.motherName || ""}
+placeholder="Mother Name"
+onChange={handleChange}
+ /> */}
+
+<div className="data-field">
+<label className="data-label">
+Mother Name :
+</label>
+
+<input
+className="form-control student-input"
+name="motherName"
+value={student.motherName || ""}
+onChange={handleChange}
+/>
+</div>
+ 
+
+              {/* <input
                 type="date"
                 className="form-control mb-2"
                 name="dateOfBirth"
                 value={student.dateOfBirth || ""}
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Date of Birth :
+</label>
 
-              <input
+<input
+type="date"
+className="form-control student-input"
+name="dateOfBirth"
+value={student.dateOfBirth || ""}
+onChange={handleChange}
+/>
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="primaryContact"
                 value={student.primaryContact || ""}
                 placeholder="Primary Contact"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Primary Contact No :
+</label>
 
-              <input
+<input
+className="form-control student-input"
+name="primaryContact"
+value={student.primaryContact || ""}
+onChange={handleChange}
+/>
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="secondaryContact"
                 value={student.secondaryContact || ""}
                 placeholder="Secondary Contact"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Secondary Contact No :
+</label>
 
-              <input
+<input
+className="form-control student-input"
+name="secondaryContact"
+value={student.secondaryContact || ""}
+onChange={handleChange}
+/>
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="email"
                 value={student.email || ""}
                 placeholder="Email"
                 onChange={handleChange}
-              />
+              /> */}
 
-            </div>
+<div className="data-field">
+<label className="data-label">
+Email ID :
+</label>
 
-            <div className="col-md-6">
+<input
+className="form-control student-input"
+name="email"
+value={student.email || ""}
+onChange={handleChange}
+/>
+</div>              
 
-              <textarea
+
+
+
+
+              {/* <textarea
                 className="form-control mb-2"
                 name="presentAddress"
                 value={student.presentAddress || ""}
                 placeholder="Present Address"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field textarea-field">
 
-              <textarea
+<label className="data-label">
+Present Address :
+</label>
+
+<textarea
+className="form-control student-textarea"
+name="presentAddress"
+value={student.presentAddress || ""}
+onChange={handleChange}
+/>
+</div>
+
+              {/* <textarea
                 className="form-control mb-2"
                 name="permanentAddress"
                 value={student.permanentAddress || ""}
                 placeholder="Permanent Address"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field textarea-field">
 
-              <input
+<label className="data-label">
+Permanent Address :
+</label>
+
+<textarea
+className="form-control student-textarea"
+name="permanentAddress"
+value={student.permanentAddress || ""}
+onChange={handleChange}
+/>
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="courseName"
                 value={student.courseName || ""}
                 placeholder="Course Name"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Course Name :
+</label>
 
-              <input
+<input
+className="form-control student-input"
+name="courseName"
+value={student.courseName || ""}
+onChange={handleChange}
+/>
+
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="courseType"
                 value={student.courseType || ""}
                 placeholder="Course Type"
                 onChange={handleChange}
-              />
-              <input
-  className="form-control mb-2"
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Course Type :
+</label>
+
+<input
+className="form-control student-input"
+name="courseType"
+value={student.courseType || ""}
+onChange={handleChange}
+/>
+
+</div>
+
+{/* <input className="form-control mb-2"
   name="universityName"
   value={student.universityName || ""}
   placeholder="University Name"
   onChange={handleChange}
+/> */}
+<div className="data-field">
+<label className="data-label">
+University Name :
+</label>
+
+<input
+className="form-control student-input"
+name="universityName"
+value={student.universityName || ""}
+onChange={handleChange}
 />
 
-              <input
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="universityRegistrationNo"
                 value={
@@ -436,48 +590,128 @@ const updateDocument = async () => {
                 }
                 placeholder="University Registration No"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+University Registration:
+</label>
 
-              <input
+<input
+className="form-control student-input"
+name="universityRegistrationNo"
+value={student.universityRegistrationNo || ""}
+onChange={handleChange}
+/>
+
+</div>
+
+              {/* <input
                 type="date"
                 className="form-control mb-2"
                 name="dateOfAdmission"
                 value={student.dateOfAdmission || ""}
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Date of Admission :
+</label>
 
-              <input
+<input
+type="date"
+className="form-control student-input"
+name="dateOfAdmission"
+value={student.dateOfAdmission || ""}
+onChange={handleChange}
+/>
+
+</div>
+
+              {/* <input
                 className="form-control mb-2"
                 name="counsellorName"
                 value={student.counsellorName || ""}
                 placeholder="Counsellor Name"
                 onChange={handleChange}
-              />
+             /> */}
 
-              <input
+<div className="data-field">
+<label className="data-label">
+Counsellor Name:
+</label>
+
+<input
+className="form-control student-input"
+name="counsellorName"
+value={student.counsellorName || ""}
+onChange={handleChange}
+/>
+
+</div>            
+
+              {/* <input
                 className="form-control mb-2"
                 name="session"
                 value={student.session || ""}
                 placeholder="Session"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Session :
+</label>
 
-              <input
+<input
+className="form-control student-input"
+name="session"
+value={student.session || ""}
+onChange={handleChange}
+/>
+
+</div>              
+
+              {/* <input
                 className="form-control mb-2"
                 name="duration"
                 value={student.duration || ""}
                 placeholder="Duration"
                 onChange={handleChange}
-              />
+              /> */}
+<div className="data-field">
+<label className="data-label">
+Duration :
+</label>
 
-            </div>
+<input
+className="form-control student-input"
+name="duration"
+value={student.duration || ""}
+onChange={handleChange}
+/>
+</div>
+  </div>
 
-          </div>
-      <h4 className="mt-4">Documents</h4>
+
+
+             
+
+            {/* </div> */}
+
+          {/* </div> */}
+      {/* <h4 className="mt-4">Documents</h4>
 
 {student.documents?.length > 0 ? (
 
-  <table className="table table-bordered">
+  <table className="table table-bordered"> */}
+  <div className="documents-section">
+
+    <h3 className="documents-title">
+        Documents
+    </h3>
+
+    {student.documents?.length > 0 ? (
+
+        <table className="documents-table">
 
     <thead>
       <tr>
@@ -501,7 +735,7 @@ const updateDocument = async () => {
 
             <button
               type="button"
-              className="btn btn-warning btn-sm"
+              className="btn btn-warning btn-sm view-btn"
               onClick={() => handleDocumentEdit(doc)}
             >
               Update
@@ -515,22 +749,34 @@ const updateDocument = async () => {
 
     </tbody>
 
+  {/* </table>
+
+) : (
+
+  <p>No Documents Uploaded</p> */}
   </table>
 
 ) : (
 
-  <p>No Documents Uploaded</p>
+<p className="no-document">
+    No Documents Uploaded
+</p>
 
 )}
+
+</div>
+
 
 
 {selectedDocumentId && (
 
-  <div className="card mt-4 p-3">
+  <div className="update-document-card">
 
-    <h5>Update Document</h5>
+    <h4 className="update-document-title">
+    Update Document
+</h4>
 
-    <input
+    {/* <input
       className="form-control mb-2"
       value={documentName}
       onChange={(e) =>
@@ -549,11 +795,35 @@ const updateDocument = async () => {
 
     <button
       type="button"
-      className="btn btn-warning"
+      className="document-save-btn"
       onClick={updateDocument}
     >
       Save Document
-    </button>
+    </button> */}
+    <div className="update-document-form">
+
+    <input
+        className="document-input"
+        value={documentName}
+        onChange={(e) => setDocumentName(e.target.value)}
+    />
+
+    <input
+        ref={fileInputRef}
+        type="file"
+        className="document-file-input"
+        onChange={(e) => setNewFile(e.target.files[0])}
+    />
+
+</div>
+
+<button
+    type="button"
+    className="document-save-btn"
+    onClick={updateDocument}
+>
+    Save Document
+</button>
 
     {documentUpdated && (
 
@@ -569,12 +839,23 @@ const updateDocument = async () => {
 
 
 
-<button
+{/* <button
   type="submit"
   className="btn btn-success mt-3"
 >
   Update Student
+</button> */}
+<div className="button-container">
+
+<button
+    type="submit"
+    className="update-btn"
+>
+    Update Student
 </button>
+
+</div>
+</div>
 
         </form>
 
